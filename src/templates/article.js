@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
 const ArticleTemplate = ({ data }) => {
-  const { title, body } = data.strapi.articles[0]
+  const { title, body } = data.strapi.article
 
   return (
     <Layout>
@@ -13,11 +13,11 @@ const ArticleTemplate = ({ data }) => {
   )
 }
 export default ArticleTemplate
+
 export const query = graphql`
-  query Article($slug: String!) {
+  query Article($id: ID!) {
     strapi {
-      articles(where: { url: $slug }) {
-        id
+      article(id: $id) {
         title
         body
         url

@@ -21,17 +21,18 @@ exports.createPages = ({ actions, graphql }) => {
     `query AllArticles {
         strapi {
           articles(where: { language_ne: "ru" }) {
+            id
             url
           }
         }
       }`
   ).then(result => {
-    result.data.strapi.articles.forEach(({ url }) => {
+    result.data.strapi.articles.forEach(({ url, id }) => {
       createPage({
         path: `/${url}`,
         component: path.resolve(`src/templates/article.js`),
         context: {
-          slug: url,
+          id,
         },
       })
     })
