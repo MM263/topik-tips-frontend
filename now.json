@@ -1,0 +1,7 @@
+{
+  "build": {
+    "env": {
+      "PROD_URL": "@topik-tips-backend-prod"
+    }
+  }
+}
