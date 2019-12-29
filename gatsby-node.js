@@ -30,7 +30,7 @@ exports.createPages = ({ actions, graphql }) => {
     result.data.strapi.articles.forEach(({ url, id }) => {
       createPage({
         path: `/${url}`,
-        component: path.resolve(`src/templates/article.js`),
+        component: path.resolve(`src/templates/article.tsx`),
         context: {
           id,
         },

@@ -1,14 +1,17 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
+import styled from "styled-components"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import SEO from "../components/seo"
+import ArticlePreview from "../components/ArticlePreview"
 
 interface ArticlePreview {
   id: string
   title: string
   description: string
   url: string
+  created_at: string
 }
 
 export interface Props {
@@ -19,24 +22,23 @@ export interface Props {
   }
 }
 
+const ArticleListItem = styled.li`
+  list-style: none;
+`
+
 const IndexPage = ({ data }: Props) => {
   const articles = data.strapi.articles
 
   return (
     <Layout>
       <SEO title="Home" />
-      {articles.map(({ id, title, description, url }) => (
-        <ul>
-          <li>
-            <article key={id}>
-              <h3>
-                <Link to={`/${url}`}>{title}</Link>
-              </h3>
-              <p>{description}</p>
-            </article>
-          </li>
-        </ul>
-      ))}
+      <ul>
+        {articles.map(({ id, ...rest }) => (
+          <ArticleListItem key={id}>
+            <ArticlePreview {...rest} />
+          </ArticleListItem>
+        ))}
+      </ul>
     </Layout>
   )
 }
@@ -51,6 +53,7 @@ export const pageQuery = graphql`
         title
         description
         url
+        created_at
       }
     }
   }
