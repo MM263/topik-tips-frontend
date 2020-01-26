@@ -1,33 +1,33 @@
-import React from "react"
-import { graphql } from "gatsby"
-import styled from "styled-components"
+import React from "react";
+import { graphql } from "gatsby";
+import styled from "styled-components";
 
-import Layout from "../components/Layout"
-import SEO from "../components/seo"
-import ArticlePreview from "../components/ArticlePreview"
+import Layout from "../components/Layout";
+import SEO from "../components/seo";
+import ArticlePreview from "../components/ArticlePreview";
 
 interface ArticlePreview {
-  id: string
-  title: string
-  description: string
-  url: string
-  created_at: string
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  created_at: string;
 }
 
 export interface Props {
   data: {
     strapi: {
-      articles: ArticlePreview[]
-    }
-  }
+      articles: ArticlePreview[];
+    };
+  };
 }
 
 const ArticleListItem = styled.li`
   list-style: none;
-`
+`;
 
 const IndexPage = ({ data }: Props) => {
-  const articles = data.strapi.articles
+  const articles = data.strapi.articles;
 
   return (
     <Layout>
@@ -40,10 +40,10 @@ const IndexPage = ({ data }: Props) => {
         ))}
       </ul>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query AllArticles {
@@ -57,4 +57,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

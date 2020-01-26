@@ -1,35 +1,35 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/Layout"
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/Layout";
 
 interface Article {
-  title: string
-  description: string
-  body: string
-  url: string
-  updated_at: string
+  title: string;
+  description: string;
+  body: string;
+  url: string;
+  updated_at: string;
 }
 
 export interface Props {
   data: {
     strapi: {
-      article: Article
-    }
-  }
+      article: Article;
+    };
+  };
 }
 
 const ArticleTemplate = ({ data }: Props) => {
-  const { title, body } = data.strapi.article
+  const { title, body } = data.strapi.article;
 
   return (
     <Layout>
       <h1>{title}</h1>
       <p>{body}</p>
     </Layout>
-  )
-}
+  );
+};
 
-export default ArticleTemplate
+export default ArticleTemplate;
 
 export const query = graphql`
   query Article($id: ID!) {
@@ -43,4 +43,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

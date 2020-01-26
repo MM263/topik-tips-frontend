@@ -1,9 +1,9 @@
-import { Link } from "gatsby"
-import React from "react"
-import styled from "styled-components"
+import { Link } from "gatsby";
+import React from "react";
+import styled from "styled-components";
 
 export interface Props {
-  siteTitle: string
+  siteTitle: string;
 }
 
 const StyledHeader = styled.header`
@@ -14,13 +14,13 @@ const StyledHeader = styled.header`
   max-width: 800px;
   margin: 0 auto;
   margin-bottom: 2rem;
-`
+`;
 
 const Title = styled(Link)`
   font-size: 4rem;
   text-decoration: none;
   color: #393939;
-`
+`;
 
 const Header = ({ siteTitle = "" }: Props) => (
   <StyledHeader>
@@ -29,6 +29,6 @@ const Header = ({ siteTitle = "" }: Props) => (
     </h1>
     <Link to="/about">About</Link>
   </StyledHeader>
-)
+);
 
-export default Header
+export default Header;
