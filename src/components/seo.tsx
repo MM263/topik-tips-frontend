@@ -78,10 +78,4 @@ function SEO({ description, lang = "en", meta = [], title = "" }: Props) {
   );
 }
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-};
-
 export default SEO;
