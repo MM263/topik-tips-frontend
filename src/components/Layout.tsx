@@ -5,6 +5,8 @@ import styled, { ThemeProvider } from "styled-components";
 import Header from "./Header";
 import GlobalStyle from "./styles/GlobalStyle";
 
+import "../../static/fonts/fonts.css";
+
 export interface Props {
   children: ReactNode;
 }

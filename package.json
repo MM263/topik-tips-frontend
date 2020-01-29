@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "MM263",
   "dependencies": {
+    "@types/markdown-to-jsx": "^6.9.1",
     "@types/react-helmet": "^5.0.15",
     "@types/styled-components": "^4.4.2",
     "babel-plugin-styled-components": "^1.10.7",
@@ -20,6 +21,7 @@
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-source-graphql": "^2.1.32",
     "gatsby-transformer-sharp": "^2.3.13",
+    "markdown-to-jsx": "^6.10.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",

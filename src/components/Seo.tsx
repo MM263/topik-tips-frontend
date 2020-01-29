@@ -10,10 +10,10 @@ import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
 export interface Props {
-  description: string;
-  lang: string;
+  description?: string;
+  lang?: string;
   title: string;
-  meta: HTMLMetaElement[];
+  meta?: HTMLMetaElement[];
 }
 
 function SEO({ description, lang = "en", meta = [], title = "" }: Props) {

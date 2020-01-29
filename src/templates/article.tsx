@@ -1,5 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Markdown from "markdown-to-jsx";
+
 import Layout from "../components/Layout";
 
 interface Article {
@@ -24,7 +26,7 @@ const ArticleTemplate = ({ data }: Props) => {
   return (
     <Layout>
       <h1>{title}</h1>
-      <p>{body}</p>
+      <Markdown>{body}</Markdown>
     </Layout>
   );
 };

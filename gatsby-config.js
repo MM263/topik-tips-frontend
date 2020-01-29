@@ -39,14 +39,14 @@ module.exports = {
           : "http://localhost:1337/graphql",
       },
     },
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        custom: {
-          families: ["Jost, GothicA1"],
-          urls: ["/fonts/fonts.css"],
-        },
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-web-font-loader",
+    //   options: {
+    //     custom: {
+    //       families: ["Jost, GothicA1"],
+    //       urls: ["/fonts/fonts.css"],
+    //     },
+    //   },
+    // },
   ],
 };
