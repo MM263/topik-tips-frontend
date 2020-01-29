@@ -19,7 +19,27 @@ const StyledHeader = styled.header`
 const Title = styled(Link)`
   font-size: 4rem;
   text-decoration: none;
-  color: #393939;
+  color: ${({ theme }) => theme.black};
+`;
+
+const AboutUs = styled(Link)`
+  color: ${({ theme }) => theme.purple};
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    height: 8px;
+    width: 8px;
+    content: "";
+    background-color: ${({ theme }) => theme.purple};
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+  }
 `;
 
 const Header = ({ siteTitle = "" }: Props) => (
@@ -27,7 +47,7 @@ const Header = ({ siteTitle = "" }: Props) => (
     <h1>
       <Title to="/">{siteTitle}</Title>
     </h1>
-    <Link to="/about">About</Link>
+    <AboutUs to="/about">About Us</AboutUs>
   </StyledHeader>
 );
 

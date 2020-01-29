@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 
 import Header from "./Header";
 import GlobalStyle from "./styles/GlobalStyle";
@@ -29,9 +29,17 @@ const Layout = ({ children }: Props) => {
 
   return (
     <>
-      <GlobalStyle />
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <StyledMain>{children}</StyledMain>
+      <ThemeProvider
+        theme={{
+          black: "#393939",
+          purple: "#4132c9",
+          yellow: "#ffe197",
+        }}
+      >
+        <GlobalStyle />
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <StyledMain>{children}</StyledMain>
+      </ThemeProvider>
     </>
   );
 };

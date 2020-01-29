@@ -22,7 +22,7 @@ const FlairRectangle = styled.div`
   margin-right: 2rem;
   width: 30px;
   border-radius: 4px;
-  background-color: #4132c9;
+  background-color: ${({ theme }) => theme.purple};
 `;
 
 const Title = styled.h1`
@@ -30,7 +30,7 @@ const Title = styled.h1`
   line-height: 1;
   font-size: 3rem;
   a {
-    color: ${({ theme }) => theme.black};
+    color: ${({ theme }) => theme.purple};
     text-decoration: none;
   }
 `;
@@ -39,6 +39,14 @@ const CreatedAt = styled.p`
   margin: 14px 0 0 0;
   line-height: 1;
   color: ${({ theme }) => theme.black};
+  font-size: 0.8em;
+  font-weight: bold;
+`;
+
+const Description = styled.p`
+  border-top: 1px solid ${({ theme }) => theme.black};
+  padding-top: 6px;
+  margin-top: 6px;
 `;
 
 const ArticlePreview = ({ title, created_at, url, description }: IProps) => {
@@ -52,7 +60,7 @@ const ArticlePreview = ({ title, created_at, url, description }: IProps) => {
           <Title>
             <Link to={`${url}`}>{title}</Link>
           </Title>
-          <p>{description}</p>
+          <Description>{description}</Description>
           <CreatedAt>{date}</CreatedAt>
         </header>
       </div>
