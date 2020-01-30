@@ -1,8 +1,8 @@
-import React from "react";
-import { graphql } from "gatsby";
-import Markdown from "markdown-to-jsx";
+import React from 'react';
+import { graphql } from 'gatsby';
+import Markdown from 'markdown-to-jsx';
 
-import Layout from "../components/Layout";
+import Layout from '../components/Layout';
 
 interface Article {
   title: string;

@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "gatsby";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
 
-import getDate from "../lib/getDate";
+import getDate from '../util/getDate';
 
 interface IProps {
   title: string;
@@ -15,7 +15,6 @@ const StyledArticle = styled.article`
   display: flex;
   align-items: stretch;
   position: relative;
-  margin-bottom: 35px;
 `;
 
 const FlairRectangle = styled.div`
@@ -28,7 +27,7 @@ const FlairRectangle = styled.div`
 const Title = styled.h1`
   margin: 0;
   line-height: 1;
-  font-size: 3rem;
+  font-size: 2em;
   a {
     color: ${({ theme }) => theme.purple};
     text-decoration: none;
@@ -47,6 +46,8 @@ const Description = styled.p`
   border-top: 1px solid ${({ theme }) => theme.black};
   padding-top: 6px;
   margin-top: 6px;
+  margin-bottom: 0;
+  font-size: 1em;
 `;
 
 const ArticlePreview = ({ title, created_at, url, description }: IProps) => {

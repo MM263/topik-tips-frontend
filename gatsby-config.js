@@ -27,16 +27,23 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    "gatsby-plugin-typescript",
+    'gatsby-plugin-typescript',
     `gatsby-plugin-styled-components`,
     {
-      resolve: "gatsby-source-graphql",
+      resolve: 'gatsby-source-graphql',
       options: {
-        typeName: "STRAPI",
-        fieldName: "strapi",
+        typeName: 'STRAPI',
+        fieldName: 'strapi',
         url: process.env.PROD_URL
           ? process.env.PROD_URL
-          : "http://localhost:1337/graphql",
+          : 'http://localhost:1337/graphql',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/util/typography',
+        omitGoogleFont: true,
       },
     },
     // {

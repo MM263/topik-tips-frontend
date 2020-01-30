@@ -1,10 +1,10 @@
-import React from "react";
-import { graphql } from "gatsby";
-import styled from "styled-components";
+import React from 'react';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
 
-import Layout from "../components/Layout";
-import SEO from "../components/Seo";
-import ArticlePreview from "../components/ArticlePreview";
+import Layout from '../components/Layout';
+import SEO from '../components/Seo';
+import ArticlePreview from '../components/ArticlePreview';
 
 interface ArticlePreview {
   id: string;
@@ -22,8 +22,13 @@ export interface Props {
   };
 }
 
+const ArticleList = styled.ul`
+  margin: 0;
+`;
+
 const ArticleListItem = styled.li`
   list-style: none;
+  margin-bottom: 2em;
 `;
 
 const IndexPage = ({ data }: Props) => {
@@ -32,13 +37,13 @@ const IndexPage = ({ data }: Props) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <ul>
+      <ArticleList>
         {articles.map(({ id, ...rest }) => (
           <ArticleListItem key={id}>
             <ArticlePreview {...rest} />
           </ArticleListItem>
         ))}
-      </ul>
+      </ArticleList>
     </Layout>
   );
 };
