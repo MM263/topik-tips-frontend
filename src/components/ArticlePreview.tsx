@@ -43,7 +43,7 @@ const CreatedAt = styled.p`
 `;
 
 const Description = styled.p`
-  border-top: 1px solid ${({ theme }) => theme.black};
+  border-top: 1px dotted ${({ theme }) => theme.black};
   padding-top: 6px;
   margin-top: 6px;
   margin-bottom: 0;
