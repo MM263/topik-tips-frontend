@@ -1,4 +1,4 @@
-import { Link } from 'gatsby';
+import { Link, withPrefix } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -27,7 +27,7 @@ const Title = styled(Link)`
   line-height: 1.5;
 `;
 
-const AboutUs = styled(Link)`
+const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.purple};
   font-size: 1em;
   font-weight: bold;
@@ -47,12 +47,38 @@ const AboutUs = styled(Link)`
   }
 `;
 
+const ListLink = styled.a`
+  color: ${({ theme }) => theme.purple};
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+  margin-right: 5rem;
+
+  &::after {
+    height: 8px;
+    width: 8px;
+    content: '';
+    background-color: ${({ theme }) => theme.purple};
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+  }
+`;
+
 const Header = ({ siteTitle = '' }: Props) => (
   <StyledHeader>
     <h1>
       <Title to="/">{siteTitle}</Title>
     </h1>
-    <AboutUs to="/about">About Us</AboutUs>
+    <div>
+      <ListLink href="KEAVL.xlsx" download>
+        Download KEAVL
+      </ListLink>
+      <StyledLink to="/about">About Us</StyledLink>
+    </div>
   </StyledHeader>
 );
 
