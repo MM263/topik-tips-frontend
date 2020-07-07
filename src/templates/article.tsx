@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Markdown from 'markdown-to-jsx';
 import styled from 'styled-components';
 
 import Layout from '../components/Layout';
@@ -21,34 +20,40 @@ const StyledArticleHeader = styled.h1`
 
 export interface Props {
   data: {
-    strapi: {
-      article: Article;
+    markdownRemark: {
+      html: string;
+      frontmatter: {
+        date: string;
+        title: string;
+        description: string;
+      };
     };
   };
 }
 
 const ArticleTemplate = ({ data }: Props) => {
-  const { title, body } = data.strapi.article;
+  const { html, frontmatter } = data.markdownRemark;
 
   return (
     <Layout>
-      <StyledArticleHeader>{title}</StyledArticleHeader>
-      <Markdown>{body}</Markdown>
+      <StyledArticleHeader>{frontmatter.title}</StyledArticleHeader>
+      <article dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
   );
 };
 
 export default ArticleTemplate;
 
-export const query = graphql`
-  query Article($id: ID!) {
-    strapi {
-      article(id: $id) {
+export const pageQuery = graphql`
+  query BlogPostByID($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      id
+      html
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
         title
         description
-        body
-        url
-        updated_at
+        tags
       }
     }
   }

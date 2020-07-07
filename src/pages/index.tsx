@@ -14,12 +14,26 @@ interface ArticlePreview {
   created_at: string;
 }
 
-export interface Props {
-  data: {
-    strapi: {
-      articles: ArticlePreview[];
-    };
+interface FrontmatterBullshit {
+  allMarkdownRemark: {
+    edges: Array<{
+      node: {
+        fields: {
+          slug: string;
+        };
+        frontmatter: {
+          title: string;
+          description: string;
+          date: string;
+        };
+        id: string;
+      };
+    }>;
   };
+}
+
+export interface Props {
+  data: FrontmatterBullshit;
 }
 
 const ArticleList = styled.ul`
@@ -31,8 +45,24 @@ const ArticleListItem = styled.li`
   margin-bottom: 2em;
 `;
 
+const transformFrontmatterIntoActualGoodObjectWhileDefeatingEntirePurposeOfGraphQL = (
+  data: FrontmatterBullshit
+): ArticlePreview[] => {
+  const rawArticles = data.allMarkdownRemark.edges;
+
+  return rawArticles.map(rawArticle => ({
+    id: rawArticle.node.id,
+    title: rawArticle.node.frontmatter.title,
+    description: rawArticle.node.frontmatter.description,
+    url: rawArticle.node.fields.slug,
+    created_at: rawArticle.node.frontmatter.date,
+  }));
+};
+
 const IndexPage = ({ data }: Props) => {
-  const articles = data.strapi.articles;
+  const articles = transformFrontmatterIntoActualGoodObjectWhileDefeatingEntirePurposeOfGraphQL(
+    data
+  );
 
   return (
     <Layout>
@@ -51,14 +81,23 @@ const IndexPage = ({ data }: Props) => {
 export default IndexPage;
 
 export const pageQuery = graphql`
-  query AllArticles {
-    strapi {
-      articles(limit: 30, where: { language_ne: "ru" }) {
-        id
-        title
-        description
-        url
-        created_at
+  query BlogRollQuery {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            date(formatString: "MMMM DD, YYYY")
+          }
+        }
       }
     }
   }

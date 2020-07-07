@@ -74,7 +74,7 @@ const Header = ({ siteTitle = '' }: Props) => (
       <Title to="/">{siteTitle}</Title>
     </h1>
     <div>
-      <ListLink href="KEAVL.xlsx" download>
+      <ListLink href="/KEAVL.xlsx" download>
         Download KEAVL
       </ListLink>
       <StyledLink to="/about">About Us</StyledLink>
